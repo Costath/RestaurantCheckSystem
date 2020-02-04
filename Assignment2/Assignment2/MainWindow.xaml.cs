@@ -39,6 +39,7 @@ namespace Assignment2
             MainCoursesComboBox.ItemsSource = MainCourses;
             DessertsComboBox.ItemsSource = Desserts;
             CheckDataGrid.ItemsSource = Check;
+
         }
 
         private void LoadCollectionData()
@@ -63,7 +64,17 @@ namespace Assignment2
 
         private void BeveragesComboBox_DropDownClosed(object sender, EventArgs e)
         {
-            MenuItem selection = menu.Beverages.ElementAt(BeveragesComboBox.SelectedIndex);
+            MenuItem selection;
+
+            try
+            {
+                selection = menu.Beverages.ElementAt(BeveragesComboBox.SelectedIndex);
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                return;
+            }
+
             bool itemPresent = false;
 
             foreach (OrderedFood Row in Check)
@@ -86,12 +97,22 @@ namespace Assignment2
                 });
             }
 
-            Subtotal += selection.Price;
+            UpdateMonetaryTextBoxes();
         }
 
         private void AppetizersComboBox_DropDownClosed(object sender, EventArgs e)
         {
-            MenuItem selection = menu.Appetizers.ElementAt(AppetizersComboBox.SelectedIndex);
+            MenuItem selection;
+
+            try
+            {
+                selection = menu.Appetizers.ElementAt(AppetizersComboBox.SelectedIndex);
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                return;
+            }
+
             bool itemPresent = false;
 
             foreach (OrderedFood Row in Check)
@@ -114,12 +135,22 @@ namespace Assignment2
                 });
             }
 
-            Subtotal += selection.Price;
+            UpdateMonetaryTextBoxes();
         }
 
         private void MainCoursesComboBox_DropDownClosed(object sender, EventArgs e)
         {
-            MenuItem selection = menu.MainCourses.ElementAt(MainCoursesComboBox.SelectedIndex);
+            MenuItem selection;
+
+            try
+            {
+                selection = menu.MainCourses.ElementAt(MainCoursesComboBox.SelectedIndex);
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                return;
+            }
+
             bool itemPresent = false;
 
             foreach (OrderedFood Row in Check)
@@ -142,12 +173,22 @@ namespace Assignment2
                 });
             }
 
-            Subtotal += selection.Price;
+            UpdateMonetaryTextBoxes();
         }
 
         private void DessertsComboBox_DropDownClosed(object sender, EventArgs e)
         {
-            MenuItem selection = menu.Desserts.ElementAt(DessertsComboBox.SelectedIndex);
+            MenuItem selection;
+
+            try
+            {
+                 selection = menu.Desserts.ElementAt(DessertsComboBox.SelectedIndex);
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                return;
+            }
+
             bool itemPresent = false;
 
             foreach (OrderedFood Row in Check)
@@ -170,7 +211,7 @@ namespace Assignment2
                 });
             }
 
-            Subtotal += selection.Price;
+            UpdateMonetaryTextBoxes();
         }
 
         private void Window_Activated(object sender, EventArgs e)
@@ -191,19 +232,45 @@ namespace Assignment2
             MainCoursesComboBox.SelectedIndex = -1;
             DessertsComboBox.SelectedIndex = -1;
 
-            Subtotal = 0;
+            UpdateMonetaryTextBoxes();
         }
 
         private void RemoveItemBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (CheckDataGrid.SelectedIndex != -1)
+            try
             {
-                OrderedFood element = Check.ElementAt(CheckDataGrid.SelectedIndex);
-                Subtotal -= element.Price * element.Quantity;
-                Check.RemoveAt(CheckDataGrid.SelectedIndex);
+                if (CheckDataGrid.SelectedIndex != -1)
+                {
+                    OrderedFood element = Check.ElementAt(CheckDataGrid.SelectedIndex);
+                    Subtotal -= element.Price * element.Quantity;
+                    Check.RemoveAt(CheckDataGrid.SelectedIndex);
+                }
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                return;
             }
 
+            UpdateMonetaryTextBoxes();
         }
 
+        private void UpdateMonetaryTextBoxes()
+        {
+            Subtotal = 0;
+
+            foreach (var row in Check)
+            {
+                Subtotal += row.Price * row.Quantity;
+            }
+
+            SubTotalTextBox.Text = (Subtotal).ToString("c");
+            TaxTextBox.Text = (Subtotal * 0.13m).ToString("c");
+            TotalTextBox.Text = (Subtotal * 1.13m).ToString("c");
+        }
+
+        private void CheckDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            UpdateMonetaryTextBoxes();
+        }
     }
 }

@@ -16,19 +16,19 @@
         <ComboBox x:Name="MainCoursesComboBox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="212" Grid.ColumnSpan="2" Margin="0,135,0,0" Height="22" DropDownClosed="MainCoursesComboBox_DropDownClosed"/>
         <ComboBox x:Name="DessertsComboBox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="212" Grid.ColumnSpan="2" Margin="0,185,0,0" Height="22" DropDownClosed="DessertsComboBox_DropDownClosed"/>
         <ComboBox x:Name="BeveragesComboBox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="212" Margin="0,35,0,0" Height="22" Grid.ColumnSpan="2" DropDownClosed="BeveragesComboBox_DropDownClosed"/>
-        <Label x:Name="PriceLabel" Content="Subtotal:" Margin="0,262,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.553,0.654" Height="26"/>
-        <Label x:Name="TotalLabel" Content="Total: " Margin="0,324,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.553,0.654" Height="26"/>
-        <Label x:Name="TaxLabel" Content="Tax:" Margin="0,293,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.553,0.654" Height="26"/>
-        <TextBox x:Name="SubTotalTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="0,266,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="101" IsReadOnly="True"/>
-        <TextBox x:Name="TaxTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="0,297,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="101" IsReadOnly="True"/>
-        <TextBox x:Name="TotalTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="0,328,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="101" IsReadOnly="True"/>
+        <Label x:Name="SubtotalLabel" Content="Subtotal:" Margin="0,261,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.553,0.654" Height="26"/>
+        <Label x:Name="TaxLabel" Content="Tax:" Margin="0,292,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.553,0.654" Height="26"/>
+        <Label x:Name="TotalLabel" Content="Total: " Margin="0,323,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.553,0.654" Height="26"/>
+        <TextBox x:Name="SubTotalTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="0,265,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="101" IsReadOnly="True"/>
+        <TextBox x:Name="TaxTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="0,296,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="101" IsReadOnly="True"/>
+        <TextBox x:Name="TotalTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="0,327,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="101" IsReadOnly="True"/>
         <Button x:Name="ClearBtn" Content="Clear Bill" HorizontalAlignment="Left" Margin="45,365,0,0" VerticalAlignment="Top" Width="133" Grid.ColumnSpan="2" Height="20" Click="ClearBtn_Click"/>
         <Button x:Name="SubmitBtn" Content="Submit Bill" HorizontalAlignment="Left" Margin="45,400,0,0" VerticalAlignment="Top" Width="133" Grid.ColumnSpan="2" Height="20"/>
-        <DataGrid x:Name="CheckDataGrid" Grid.Column="2" HorizontalAlignment="Left" Height="410" Margin="10,10,0,0" VerticalAlignment="Top" Width="525" MinColumnWidth="40" ColumnWidth="*"/>
-        <Label x:Name="PriceLabel_Copy" Content="Appetizer" Margin="10,60,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.553,0.654" Grid.ColumnSpan="2" Height="26"/>
-        <Label x:Name="PriceLabel_Copy1" Content="Main Course" Margin="10,110,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.553,0.654" Grid.ColumnSpan="2" Height="26"/>
-        <Label x:Name="PriceLabel_Copy2" Content="Dessert" Margin="10,160,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.553,0.654" Grid.ColumnSpan="2" Height="26"/>
-        <Label x:Name="PriceLabel_Copy3" Content="Beverage" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.553,0.654" Height="26" Grid.ColumnSpan="2"/>
-        <Button x:Name="RemoveItemBtn" Content="Remove Item" HorizontalAlignment="Left" Margin="45,223,0,0" VerticalAlignment="Top" Width="133" Grid.ColumnSpan="2" Height="20" Click="RemoveItemBtn_Click"/>
+        <DataGrid x:Name="CheckDataGrid" Grid.Column="2" HorizontalAlignment="Left" Height="410" Margin="10,10,0,0" VerticalAlignment="Top" Width="525" MinColumnWidth="40" ColumnWidth="*" SelectionChanged="CheckDataGrid_SelectionChanged"/>
+        <Label x:Name="AppetizerLabel" Content="Appetizer" Margin="10,60,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.553,0.654" Grid.ColumnSpan="2" Height="26"/>
+        <Label x:Name="MainCourseLabel" Content="Main Course" Margin="10,110,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.553,0.654" Grid.ColumnSpan="2" Height="26"/>
+        <Label x:Name="DessertLabel" Content="Dessert" Margin="10,160,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.553,0.654" Grid.ColumnSpan="2" Height="26"/>
+        <Label x:Name="BeverageLabel" Content="Beverage" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.553,0.654" Height="26" Grid.ColumnSpan="2"/>
+        <Button x:Name="RemoveItemBtn" Content="Remove Item" HorizontalAlignment="Left" Margin="45,222,0,0" VerticalAlignment="Top" Width="133" Grid.ColumnSpan="2" Height="20" Click="RemoveItemBtn_Click"/>
     </Grid>
 </Window>
