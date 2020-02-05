@@ -214,7 +214,7 @@ namespace Assignment2
             UpdateMonetaryTextBoxes();
         }
 
-        private void Window_Activated(object sender, EventArgs e)
+        private void MainAppWindow_Loaded(object sender, RoutedEventArgs e)
         {
             foreach (var column in CheckDataGrid.Columns)
             {
@@ -222,6 +222,10 @@ namespace Assignment2
             }
             
             CheckDataGrid.Columns.Where(x => x.Header.ToString() == "Quantity").FirstOrDefault().IsReadOnly = false;
+
+            SubTotalTextBox.Text = (0).ToString("c");
+            TaxTextBox.Text = (0).ToString("c");
+            TotalTextBox.Text = (0).ToString("c");
         }
 
         private void ClearBtn_Click(object sender, RoutedEventArgs e)
@@ -254,6 +258,11 @@ namespace Assignment2
             UpdateMonetaryTextBoxes();
         }
 
+        private void CheckDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            UpdateMonetaryTextBoxes();
+        }
+
         private void UpdateMonetaryTextBoxes()
         {
             Subtotal = 0;
@@ -268,9 +277,43 @@ namespace Assignment2
             TotalTextBox.Text = (Subtotal * 1.13m).ToString("c");
         }
 
-        private void CheckDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void SubmitBtn_Click(object sender, RoutedEventArgs e)
         {
-            UpdateMonetaryTextBoxes();
+            FlowDocument doc = CreateFlowDocument();
+            IDocumentPaginatorSource idpSource = doc;
+            PrintDialog printDlg = new PrintDialog();
+            printDlg.PrintDocument(idpSource.DocumentPaginator, "Printing the Check.");
+        }
+
+        private FlowDocument CreateFlowDocument()
+        {
+            FlowDocument doc = new FlowDocument();
+            Section sec = new Section();
+            Paragraph parag = new Paragraph();
+
+            parag.Inlines.Add("Name\t\t          Quantity\t     Price");
+            sec.Blocks.Add(parag);
+            doc.Blocks.Add(sec);
+
+            foreach (var row in Check)
+            {
+                parag = null;
+                parag = new Paragraph();
+
+                parag.Inlines.Add(row.ToString());
+                sec.Blocks.Add(parag);
+                doc.Blocks.Add(sec);
+            }
+
+            parag = new Paragraph();
+            parag.Inlines.Add($"------------------------------------------------------\n");
+            parag.Inlines.Add($"Subtotal\t\t\t{Subtotal,25:c}\n");
+            parag.Inlines.Add($"Tax\t\t\t{Subtotal * 0.13m,25:c}\n");
+            parag.Inlines.Add($"Total\t\t\t{Subtotal * 1.13m,25:c}");
+            sec.Blocks.Add(parag);
+            doc.Blocks.Add(sec);
+
+            return doc;
         }
     }
 }
