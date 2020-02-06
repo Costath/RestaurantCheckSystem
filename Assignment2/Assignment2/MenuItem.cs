@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Assignment2
 {
+    /// <summary>
+    /// Each item added to the ComboBoxes
+    /// </summary>
     public class MenuItem
     {
         public string Name { get; set; }

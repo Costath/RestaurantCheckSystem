@@ -8,6 +8,9 @@ namespace Assignment2
 {
     public class Menu
     {
+        /// <summary>
+        /// List of MenuItem objects containing the available Beverages
+        /// </summary>
         public List<MenuItem> Beverages = new List<MenuItem> {
             new MenuItem{
                         Name = "Soda",
@@ -40,6 +43,9 @@ namespace Assignment2
                         Price = 1.50m
                         }};
 
+        /// <summary>
+        /// List of MenuItem objects containing the available Appetizers
+        /// </summary>
         public List<MenuItem> Appetizers = new List<MenuItem> {
             new MenuItem{
                         Name = "Buffalo Wings",
@@ -77,7 +83,10 @@ namespace Assignment2
                         Price = 6.95m
                         } };
 
-        public List<MenuItem> MainCourses = new List<MenuItem> {
+        /// <summary>
+        /// List of MenuItem objects containing the available Main Course dishes
+        /// </summary>
+        public List<MenuItem> MainCourseDishes = new List<MenuItem> {
             new MenuItem{
                         Name = "Seafood Alfredo",
                         Category = "Main Course",
@@ -124,6 +133,9 @@ namespace Assignment2
                         Price = 14.95m
                         } };
 
+        /// <summary>
+        /// List of MenuItem objects containing the available Desserts
+        /// </summary>
         public List<MenuItem> Desserts = new List<MenuItem> {
             new MenuItem{
                         Name = "Apple Pie",
