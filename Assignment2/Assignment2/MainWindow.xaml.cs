@@ -373,5 +373,13 @@ namespace Assignment2
             Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
             e.Handled = true;
         }
+
+        private void OnAutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        {
+            if (e.PropertyName == "Price")
+            {
+                (e.Column as DataGridTextColumn).Binding.StringFormat = "c";
+            }
+        }
     }
 }
