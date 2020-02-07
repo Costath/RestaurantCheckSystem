@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Assignment2"
         mc:Ignorable="d"
-        Title="MainWindow" Height="489" Width="800" WindowStartupLocation="CenterScreen" Loaded="MainAppWindow_Loaded">
+        Title="Restaurant Check System" Height="520.083" Width="812.667" WindowStartupLocation="CenterScreen" Loaded="MainAppWindow_Loaded">
     <Grid x:Name="MainGrid" HorizontalAlignment="Left" Height="442" Margin="10,10,0,0" VerticalAlignment="Top" Width="780">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="37*"/>
@@ -24,11 +24,37 @@
         <TextBox x:Name="TotalTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="0,327,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="101" IsReadOnly="True"/>
         <Button x:Name="ClearBtn" Content="Clear Bill" HorizontalAlignment="Left" Margin="45,365,0,0" VerticalAlignment="Top" Width="133" Grid.ColumnSpan="2" Height="20" Click="ClearBtn_Click"/>
         <Button x:Name="SubmitBtn" Content="Submit Bill" HorizontalAlignment="Left" Margin="45,400,0,0" VerticalAlignment="Top" Width="133" Grid.ColumnSpan="2" Height="20" Click="SubmitBtn_Click"/>
-        <DataGrid x:Name="CheckDataGrid" Grid.Column="2" HorizontalAlignment="Left" Height="410" Margin="10,10,0,0" VerticalAlignment="Top" Width="525" MinColumnWidth="40" ColumnWidth="*" SelectionChanged="CheckDataGrid_SelectionChanged"/>
+        <DataGrid x:Name="CheckDataGrid" Grid.Column="2" HorizontalAlignment="Left" Height="410" Margin="10,10,0,0" VerticalAlignment="Top" Width="538" MinColumnWidth="40" ColumnWidth="*" SelectionChanged="CheckDataGrid_SelectionChanged" CanUserSortColumns="False"/>
         <Label x:Name="AppetizerLabel" Content="Appetizer" Margin="10,60,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.553,0.654" Grid.ColumnSpan="2" Height="26"/>
         <Label x:Name="MainCourseDishesLabel" Content="Main Course" Margin="10,110,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.553,0.654" Grid.ColumnSpan="2" Height="26"/>
         <Label x:Name="DessertLabel" Content="Dessert" Margin="10,160,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.553,0.654" Grid.ColumnSpan="2" Height="26"/>
         <Label x:Name="BeverageLabel" Content="Beverage" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.553,0.654" Height="26" Grid.ColumnSpan="2"/>
         <Button x:Name="RemoveItemBtn" Content="Remove Item" HorizontalAlignment="Left" Margin="45,222,0,0" VerticalAlignment="Top" Width="133" Grid.ColumnSpan="2" Height="20" Click="RemoveItemBtn_Click"/>
+        <StatusBar x:Name="indentityStatusBar"
+                   HorizontalAlignment="Left"
+                   Height="26"
+                   Margin="0,442,0,-26"
+                   VerticalAlignment="Top"
+                   Width="780" Grid.ColumnSpan="3">
+
+            <StatusBarItem x:Name="studentId"
+                           Content="Student: Thales Costa | ID: 301035028"
+                           Height="24"
+                           VerticalAlignment="Center"
+                           Width="752"
+                           HorizontalAlignment="Center" Margin="0,0,0,2" />
+            <Hyperlink NavigateUri="https://www.centennialcollege.ca/"
+                       RequestNavigate="Hyperlink_Handler"
+                       TextDecorations="none" Block.TextAlignment="Right">
+                <Image x:Name="centennialCollegeImage"
+                       Height="23"
+                       Width="23"
+                       Source="CentennialLogo.png"
+                       HorizontalAlignment="Left" 
+                       VerticalAlignment="Top" 
+                       ClipToBounds="False" 
+                       Margin="-2,-3,0,0"/>
+            </Hyperlink>
+        </StatusBar>
     </Grid>
 </Window>
