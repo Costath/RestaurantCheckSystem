@@ -111,7 +111,7 @@ namespace Assignment2
                 {
                     Name = selection.Name,
                     Quantity = 1,
-                    Price = selection.Price
+                    Price = selection.Price.ToString()
                 });
             }
 
@@ -154,7 +154,7 @@ namespace Assignment2
                 {
                     Name = selection.Name,
                     Quantity = 1,
-                    Price = selection.Price
+                    Price = selection.Price.ToString()
                 });
             }
 
@@ -197,7 +197,7 @@ namespace Assignment2
                 {
                     Name = selection.Name,
                     Quantity = 1,
-                    Price = selection.Price
+                    Price = selection.Price.ToString()
                 });
             }
 
@@ -240,7 +240,7 @@ namespace Assignment2
                 {
                     Name = selection.Name,
                     Quantity = 1,
-                    Price = selection.Price
+                    Price = selection.Price.ToString()
                 });
             }
 
@@ -285,9 +285,21 @@ namespace Assignment2
             {
                 if (CheckDataGrid.SelectedIndex != -1)
                 {
-                    OrderedFood element = Check.ElementAt(CheckDataGrid.SelectedIndex);
-                    Subtotal -= element.Price * element.Quantity;
-                    Check.RemoveAt(CheckDataGrid.SelectedIndex);
+                    OrderedFood selection = Check.ElementAt(CheckDataGrid.SelectedIndex);
+                    List<MenuItem> items = menu.Appetizers;
+                    items.AddRange(menu.Beverages);
+                    items.AddRange(menu.Desserts);
+                    items.AddRange(menu.MainCourseDishes);
+
+                    foreach (MenuItem item in items)
+                    {
+                        if (item.Name == selection.Name)
+                        {
+                            Subtotal -= item.Price * selection.Quantity;
+                            Check.RemoveAt(CheckDataGrid.SelectedIndex);
+                        }
+                    }
+
                 }
             }
             catch (ArgumentOutOfRangeException)

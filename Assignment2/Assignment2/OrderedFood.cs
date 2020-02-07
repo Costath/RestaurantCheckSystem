@@ -13,7 +13,14 @@ namespace Assignment2
     {
         public string Name { get; set; }
         public int Quantity { get; set; }
-        public decimal Price { get; set; }
+        public string Price
+        {
+            get
+            {
+                return String.Format("{0:c}", Price);
+            }
+            set { }
+        }
 
         public override string ToString()
         {
