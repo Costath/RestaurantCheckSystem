@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MyWpfControlLibrary
+namespace UserControlLibrary
 {
     /// <summary>
     /// Interaction logic for UserControl1.xaml
@@ -21,27 +21,27 @@ namespace MyWpfControlLibrary
 
     public partial class LoginUserControl : UserControl
     {
-        public static readonly DependencyProperty UserNameProperty = DependencyProperty.Register("UserName", typeof(String), typeof(LoginUserControl));
-        public static readonly DependencyProperty PasswordProperty = DependencyProperty.Register("Password", typeof(String), typeof(LoginUserControl));
-
+        
         public string UserName
         {
-            get
-            {
-                return (string)GetValue(UserNameProperty);
-            }
+            get { return (string)GetValue(UserNameProperty); }
+            set { SetValue(UserNameProperty, value); }
         }
+        
+        public static readonly DependencyProperty UserNameProperty = DependencyProperty.Register("UserName", typeof(String), typeof(LoginUserControl));
+        
         public string Password
         {
-            get
-            {
-                return (string)GetValue(PasswordProperty);
-            }
+            get { return (string)GetValue(PasswordProperty); }
+            set { SetValue(PasswordProperty, value); }
         }
+        
+        public static readonly DependencyProperty PasswordProperty = DependencyProperty.Register("Password", typeof(String), typeof(LoginUserControl));
 
         public LoginUserControl()
         {
             InitializeComponent();
+            DataContext = this;
         }
     }
 }
